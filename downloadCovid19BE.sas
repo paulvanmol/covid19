@@ -51,3 +51,6 @@ run;
 data covid.TESTS; 
 set xlscov.'TESTS'n;
 run;
+data covid.VACC; 
+set xlscov.'VACC'n;
+run;
