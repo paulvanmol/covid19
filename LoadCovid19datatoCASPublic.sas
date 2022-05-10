@@ -21,37 +21,41 @@ caslib _all_ assign;
 /*****************************************************************************/
 
 proc casutil;
-    droptable casdata="covid19be_cases_agesex" caslib="public" quiet; 
+    droptable casdata="covid19be_cases_agesex" incaslib="public" quiet; 
 	load data=covid.cases_agesex outcaslib="public"
 	casout="covid19be_cases_agesex" promote;
 run;
 proc casutil;
-    droptable casdata="covid19be_hosp" caslib="public" quiet; 
+    droptable casdata="covid19be_hosp" incaslib="public" quiet; 
 	load data=covid.hosp outcaslib="public"
 	casout="covid19be_hosp" promote;
 run;
 
 proc casutil;
-    droptable casdata="covid19be_mort" caslib="public" quiet; 
+    droptable casdata="covid19be_mort" incaslib="public" quiet; 
 	load data=covid.mort outcaslib="public"
 	casout="covid19be_mort" promote;
 run;
 proc casutil;
-    droptable casdata="covid19be_tests" caslib="public" quiet; 
+    droptable casdata="covid19be_tests" incaslib="public" quiet; 
 	load data=covid.tests outcaslib="public"
 	casout="covid19be_tests" promote;
 run;
 proc casutil;
-    droptable casdata="covid19be_cases_muni" caslib="public" quiet; 
+    droptable casdata="covid19be_cases_muni" incaslib="public" quiet; 
 	load data=covid.cases_muni outcaslib="public"
 	casout="covid19be_cases_muni" promote;
 run;
 proc casutil;
-    droptable casdata="covid19be_cases_muni_cum" caslib="public" quiet; 
+    droptable casdata="covid19be_cases_muni_cum" incaslib="public" quiet; 
 	load data=covid.cases_muni_cum outcaslib="public"
 	casout="covid19be_cases_muni_cum" promote;
 run;
-
+proc casutil;
+    droptable casdata="covid19be_vacc" incaslib="public" quiet; 
+	load data=covid.vacc outcaslib="public"
+	casout="covid19be_vacc" promote;
+run;
 
 /* Creates a permanent copy of an in-memory table ("table-name") from "sourceCaslib".      */
 /* The in-memory table is saved to the data source that is associated with the target      */
@@ -80,4 +84,9 @@ quit;
 proc casutil;
     save casdata="covid19be_mort" incaslib="public" outcaslib="public"
 	     casout="covid19be_mort.sashdat" replace;
+quit;
+
+proc casutil;
+    save casdata="covid19be_vacc" incaslib="public" outcaslib="public"
+	     casout="covid19be_vacc.sashdat" replace;
 quit;
