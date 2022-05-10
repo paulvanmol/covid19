@@ -15,12 +15,12 @@ run;
 
 data covid.cases_agesex; 
 set xlscov.'CASES_AGESEX'n;
-daten=input(date,yymmdd10.);
-format daten date9.;
+*daten=input(date,yymmdd10.);
+*format daten date9.;
 run;
 
 proc summary data=covid.cases_agesex nway; 
-class daten; 
+class date; 
 var cases; 
 output out=casesbydate sum=cases; 
 run; 
